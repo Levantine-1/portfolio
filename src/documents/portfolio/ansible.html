@@ -36,8 +36,8 @@
     <div class="inner">
 
       <h2>ANSIBLE<br/></h2>
-      <p>IF YOUR OPERATIONAL PARADIGM IS TO BURN DOWN AND REBUILD, AND IF YOUR NETWORK TOPOLOGY IS RELATIVELY SIMPLE, THEN ANSIBLE IS GREAT</p>
-      <a class="icon brands fa-github" href="https://github.com/Levantine-1/ansible">GitHub Repo: github.com/Levantine-1/ansible</a>
+      <p>A collection of Ansible playbooks for managing and configuring servers. </p>
+      <a class="icon brands spacing fa-github" href="https://github.com/Levantine-1/ansible"> Ansible GitHub Repo</a>
     </div>
   </section>
 
@@ -48,20 +48,21 @@
     <section id="one" class="wrapper spotlight style1">
       <div class="inner">
         <div class="content" style="text-align: left;">
-          <h2 class="major">WHAT DO YOU MEAN?!</h2>
-          <p>Terraform is stateful and declarative. If I modify the IAC to create a resource, terraform creates the resource and keeps track of it. If I delete the resource from the IAC, terraform will also delete the actual resource.</p>
-          <p>Ansible can be declarative (flawed declarative in my opinion), but it's not stateful. So say I add a user or package today. If I want to remove the package or user later, I have to add a step to remove the package or user in the playbook.</p>
-          <p>So that's what I meant by if your operational paradigm is to burn down the environment and rebuild it, Ansible is great! And having a simple network topology really helps with not having to keep track of a bunch of SSH Jumps.</p>
-          <p>If your environment must be persistent and have weird hickups with SSH, might I recommend Declarative and Stateful SaltStack? In any case, Ansible is winning the config management war, so it's the tool I'll use and recommend.</p>
-        </div>
-      </div>
-    </section>
-    <section id="two" class="wrapper alt spotlight style2">
+          <h2 class="major">Ansible Playbooks Repository</h2>
+          <p>
+            This repository contains a collection of Ansible playbooks for managing and configuring servers. The playbooks are organized into the following categories based on their purpose and functionality:
+            <br/><h1>OS Configurations (os_configs)</h1>
+            Playbooks in this category are responsible for configuring the operating system on the hosts. This includes tasks such as installing and updating basic packages, setting up specific software like Firefox, and deploying SSL certificates. These playbooks ensure that the hosts are set up with the necessary software and configurations to run the services they are intended for.
+            <br/>
+            <br/>Run the app.yml to cover all the playbooks in this category.
 
-      <div class="inner">
-        <div class="content">
-          <h2 class="major">Simplified Topology for Reference</h2>
-          <img src="../../images/networkdiagram.png"/>
+            <br/><br/><h1>Applications (applications)</h1>
+            The applications category contains playbooks for setting up and configuring specific applications on the hosts. This could include tasks such as installing and configuring web servers, databases, and other application-specific software. These playbooks are used to set up the specific services that the hosts are intended to run.
+
+            <br/><br/><h1>Note:</h1>
+            <b>SSL Certificates:</b>
+            <br/>The SSL certificates are stored in hashicorp vault so the playbook will need access to retrieve the certificates from vault and deploy them to the hosts.
+          </p>
         </div>
       </div>
     </section>

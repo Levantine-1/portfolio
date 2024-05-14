@@ -3377,7 +3377,7 @@ input, select, textarea {
 
 /* Banner */
 #banner {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../images/ggb.webp');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('../../images/ggb.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -4164,4 +4164,13 @@ input, select, textarea {
 
 #three p {
     text-align: left;
+}
+
+.spacing {
+    margin-right: 20px; /* Adjust the value as needed */
+}
+
+.pdf-icon {
+    width: 24px;  /* Adjust the value as needed */
+    height: 24px; /* Adjust the value as needed */
 }

@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+    <title>Browse All Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+</head>
+
+<body class="is-preload">
+
+
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <header id="header" class="alt">
+        <h1><a href="../../index.html">LEVANTINE - PORTFOLIO</a></h1>
+        <nav>
+            <a href="#menu">Menu</a>
+        </nav>
+    </header>
+
+    <!-- Menu -->
+    <nav id="menu">
+        <div class="inner">
+            <h2>Menu</h2>
+            <ul class="links">
+                <li><a href="../../index.html">Home</a></li>
+            </ul>
+            <a href="#" class="close">Close</a>
+        </div>
+    </nav>
+
+
+    <section id="banner">
+        <div class="inner">
+
+            <h2>THISPER<br/></h2>
+            <p>Telephone + (Chinese) Whispers = Thisper</p>
+            <a class="icon brands spacing fa-github" href="https://github.com/Levantine-1/ansible"> Thisper GitHub Repo</a>
+        </div>
+    </section>
+
+
+    <section id="wrapper">
+
+        <!-- One -->
+        <section id="one" class="wrapper spotlight style1">
+            <div class="inner">
+                <div class="content" style="text-align: left;">
+                    <h2 class="major">Thisper</h2>
+                    <p>
+                        Thisper is a Python-flask based web application that serves as an interface to interact with Jenkins jobs. The application is designed to monitor and return the status of specific Jenkins jobs, such as deploying a container or running Terraform.
+                        <br/>
+                        <br/>I created this because I did not want to expose jenkins to the internet, and I didn't like how the API token is passed in at the URL level.
+                        <br/>
+                        <br/>This way the token can be stored in the message body, so it's protected by SSL encryption between GitHub actions and the Thisper service. Thisper and Jenkins exist on the same network, so it should be a bit safer.
+                        <br/><br/><h1>Functionality</h1>
+                        The application exposes a route that accepts a job type and job ID as parameters. The job type can be either deployContainer or runTerraform. The application then constructs a URL to the Jenkins job's API and makes a GET request to retrieve the job's status. If the job is in progress, it returns a message indicating so. If the job is not in progress, it retrieves and returns the console text of the job.
+                        <br/><br/><h1>Deployment</h1>
+                        The application is deployed using GitHub Actions, as defined in the .github/workflows/deploy.yml file. The deployment process involves applying Terraform templates, building and pushing a Docker container to Amazon ECR, and deploying the container.
+                        <br/><br/><h1>Development</h1>
+                        The application is developed in Python and uses pip for package management. It can be run locally using the command python thisper.py, and it will be available at http://0.0.0.0:5000.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section id="two" class="wrapper alt spotlight style2">
+
+            <div class="inner">
+                <div class="content">
+                    <h2 class="major">Generalized Thisper Flow</h2>
+                    <img src="../../images/thisper(1).png"/>
+                </div>
+            </div>
+        </section>
+    </section>
+    <!-- Footer -->
+    <section id="footer">
+        <ul class="copyright">
+            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </section>
+    <!-- Scripts -->
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/jquery.scrollex.min.js"></script>
+    <script src="../../assets/js/browser.min.js"></script>
+    <script src="../../assets/js/breakpoints.min.js"></script>
+    <script src="../../assets/js/util.js"></script>
+    <script src="../../assets/js/main.js"></script>
+</div>
+</body>
+</html>
