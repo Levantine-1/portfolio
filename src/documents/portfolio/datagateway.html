@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <title>Browse All Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+</head>
+
+<body class="is-preload">
+
+
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <header id="header" class="alt">
+        <h1><a href="../../index.html">LEVANTINE - PORTFOLIO</a></h1>
+        <nav>
+            <a href="#menu">Menu</a>
+        </nav>
+    </header>
+
+    <!-- Menu -->
+    <nav id="menu">
+        <div class="inner">
+            <h2>Menu</h2>
+            <ul class="links">
+                <li><a href="../../index.html">Home</a></li>
+            </ul>
+            <a href="#" class="close">Close</a>
+        </div>
+    </nav>
+
+
+    <section id="banner">
+        <div class="inner">
+
+            <h2>Data Gateway<br/></h2>
+            <p>JAVA SPRINGBOOT DATABASE API SERVICE</p>
+            <a class="icon brands spacing fa-github" href="https://github.com/Levantine-1/DataGateway"> Data Gateway GitHub Repo</a>
+        </div>
+    </section>
+
+
+    <section id="wrapper">
+
+        <!-- One -->
+        <section id="one" class="wrapper spotlight style1">
+            <div class="inner">
+                <div class="content" style="text-align: left;">
+                    <h2 class="major">Data Gateway</h2>
+                    <p> Data Gateway is written in Java using the SpringBoot framework that sits in front of my 3 node <b><a href="https://docs.percona.com/percona-xtradb-cluster/8.0/">Percona XtraDB cluster</a></b> and provides a layer of abstraction between the database and the client.
+                        <br><br>The advantage is that we get "Loose Coupling" which means we don't need to touch other code if we change the underlying database or any other backend changes.
+                        There is also the security advantage as we can bury the database further down the network chain.
+                        <br><br>Currently this project is in the POC phase and currently doesn't do much besides generate a token on requests and fetches data after authenticating by token.
+                        It's currently a work in progress but will eventually be deployed in a Kubernetes cluster and it should scale horizontally. It will eventually have full support for stateless sessions with JWTs and have a more secure way of generating and hashing tokens
+                        <br><br>More features will be coming, and I'll update this as I work on it.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </section>
+    <!-- Footer -->
+    <section id="footer">
+        <ul class="copyright">
+            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </section>
+    <!-- Scripts -->
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/jquery.scrollex.min.js"></script>
+    <script src="../../assets/js/browser.min.js"></script>
+    <script src="../../assets/js/breakpoints.min.js"></script>
+    <script src="../../assets/js/util.js"></script>
+    <script src="../../assets/js/main.js"></script>
+</div>
+</body>
+</html>
