@@ -137,23 +137,23 @@
 								<section class="features">
 									<article>
 										<h3 class="major">Terraform</h3>
-										<p>The Terraform Templates in this repo builds the base AWS environment for the Terraform Templates other repos to build on top of.</p>
+										<p>The TF Templates in this repo establish the foundational AWS infrastructure, including IAM users, groups, policies, and VPCs. IAM access keys are securely stored in HashiCorp Vault, enabling microservices to autonomously manage AWS resources within granted permissions.</p>
 										<a href="documents/portfolio/terraform.html" class="special">Learn more</a>
 									</article>
 									<article>
 										<h3 class="major">Ansible</h3>
-										<p>All my VMs and EC2 are configured by Ansible</p><br/><br/>
+										<p>These Ansible Playbooks automate the deployment and configuration of system components and application configurations for a complex multi-service infrastructure, virtually eliminating any need for a human (me) to hack away at the CLI console.</p><br/>
 										<a href="documents/portfolio/ansible.html" class="special">Learn more</a>
 									</article>
 									<article>
-										<h3 class="major">Thisper</h3>
-										<p>Telephone + Whisper = Thisper. This is a backend microservice that receives HTTP requests and translates then forwards them.</p>
-										<a href="documents/portfolio/thisper.html" class="special">Learn more</a>
+										<h3 class="major">Data Gateway</h3>
+										<p>A Java SpringBoot REST API server that sits in front of a Percona XtraDB cluster to decouple applications from direct database access. It is horizontally scaling with Kubernetes, and adhears to SOLID Object-Oriented and 12 Factor App principles.</p>
+										<a href="documents/portfolio/datagateway.html" class="special">Learn more</a>
 									</article>
 									<article>
-										<h3 class="major">Data Gateway</h3>
-										<p>A Java SpringBoot REST API server that sits in front of a Percona XtraDB cluster to decouple applications from direct database access. It is horizontally scaling with Kubernetes, and uses JWTs for stateless sessions.</p>
-										<a href="documents/portfolio/datagateway.html" class="special">Learn more</a>
+										<h3 class="major">Thisper</h3>
+										<p>This is a Python Flask based functional backend microservice that receives HTTP requests and translates then forwards them. Currently only used to translate and forward remote trigger calls to Jenkins as part of the CICD pipeline.</p>
+										<a href="documents/portfolio/thisper.html" class="special">Learn more</a>
 									</article>
 									<article>
 										<h3 class="major">Projects running my CICD</h3>
