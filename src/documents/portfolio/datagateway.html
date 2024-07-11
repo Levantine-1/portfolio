@@ -49,11 +49,10 @@
             <div class="inner">
                 <div class="content" style="text-align: left;">
                     <h2 class="major">Data Gateway</h2>
-                    <p> Data Gateway is written in Java using the SpringBoot framework that sits in front of my 3 node <b><a href="https://docs.percona.com/percona-xtradb-cluster/8.0/">Percona XtraDB cluster</a></b> and provides a layer of abstraction between the database and the client.
-                        <br><br>The advantage is that we get "Loose Coupling" which means we don't need to touch other code if we change the underlying database or any other backend changes.
+                    <p> Data Gateway is written in Java using the SpringBoot framework, following the SOLID and 12 App Principles, that sits in front of my 3 node <b><a href="https://docs.percona.com/percona-xtradb-cluster/8.0/">Percona XtraDB cluster</a></b> and provides a layer of abstraction between the database and the client.
+                        <br><br>The advantage of this database abstraction layer is that we get "Loose Coupling" which means we don't need to touch other code if we change the underlying database or any other backend changes.
                         There is also the security advantage as we can bury the database further down the network chain.
-                        <br><br>Currently this project is in the POC phase and currently doesn't do much besides generate a token on requests and fetches data after authenticating by token.
-                        It's currently a work in progress but will eventually be deployed in a Kubernetes cluster and it should scale horizontally. It will eventually have full support for stateless sessions with JWTs and have a more secure way of generating and hashing tokens
+                        <br><br>Data Gateway is currently deployed in a Kubernetes cluster with 1 control plane and 2 worker nodes with 4-8 replicas which enables this app to scale horizontally. It will eventually have full support for stateless sessions with JWTs and have a more secure way of generating and hashing tokens.
                         <br><br>More features will be coming, and I'll update this as I work on it.
                     </p>
                 </div>
