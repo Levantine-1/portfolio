@@ -49,11 +49,45 @@
             <div class="inner">
                 <div class="content" style="text-align: left;">
                     <h2 class="major">Data Gateway</h2>
-                    <p> Data Gateway is written in Java using the SpringBoot framework, following the SOLID and 12 App Principles, that sits in front of my 3 node <b><a href="https://docs.percona.com/percona-xtradb-cluster/8.0/">Percona XtraDB cluster</a></b> and provides a layer of abstraction between the database and the client.
+                    <b>What is it?</b>
+                    <p> Data Gateway is written in Java using the SpringBoot framework, following the SOLID and 12 App Principles, that sits in front of my 3 node multi-master <b><a href="https://docs.percona.com/percona-xtradb-cluster/8.0/">Percona XtraDB cluster</a></b> and provides a layer of abstraction between the database and the client.
                         <br><br>The advantage of this database abstraction layer is that we get "Loose Coupling" which means we don't need to touch other code if we change the underlying database or any other backend changes.
                         There is also the security advantage as we can bury the database further down the network chain.
-                        <br><br>Data Gateway is currently deployed in a Kubernetes cluster with 1 control plane and 2 worker nodes with 4-8 replicas which enables this app to scale horizontally. It will eventually have full support for stateless sessions with JWTs and have a more secure way of generating and hashing tokens.
-                        <br><br>More features will be coming, and I'll update this as I work on it.
+                        <br><br>Data Gateway is currently deployed in a Kubernetes cluster with 1 control plane and 2 worker nodes with N replicas enabling this app to scale horizontally. It will eventually have full support for stateless sessions with JWTs and have a more secure way of generating and hashing tokens.
+
+                        <br><br><b>How is this application set up and deployed?</b>
+                        <br> Almost automagically because the perpetual free license of VMware ESXi doesn't provide API access for terraform to manage the VMs.
+                        <br> I still need to create the VMs by importing clean image, and then add a static entry in the OPNSense router. After that however...
+
+                        <br><br>1. AWS IAM resources are created by Terraform in the main terraform repo, for example in this <b><a href="https://github.com/Levantine-1/terraform/blob/master/iam/users/users.tf">users.tf</a></b>
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The access and secret keys are stored in <b><a href="https://www.hashicorp.com/products/vault">Hashicorp Vault</a></b> for later retrieval.
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I am using users and keys as I'm using resources outside of AWS to save on cost. Hybrid cloud baby!
+                        <br>2. The VMs are configured to baseline settings using these <b><a href="https://github.com/Levantine-1/ansible/tree/master/roles/os_configs"> Ansible Playbooks</a></b>, starting with <b><a href="https://github.com/Levantine-1/ansible/blob/master/roles/os_configs/all.yml">this as the entry point.</a></b>
+                        <br>3. The multi-master percona xtraDB database cluster is set up using <b><a href="https://github.com/Levantine-1/ansible/tree/master/roles/applications/perconaXtraDbCluster">these playbooks.</a></b>
+                        <br>4. The base Kubernetes cluster is set up using <b><a href="https://github.com/Levantine-1/ansible/tree/master/roles/os_configs/kubernetes_clusters_baseline">these playbooks.</a></b>
+                        <br>5. The Kubernetes deployment and service is configured using <b><a href="https://github.com/Levantine-1/ansible/blob/master/roles/applications/dataGateway/dataGatewayK8Configs.yml">this playbook.</a></b>
+
+                        <br><br>Upon commit to the master branch, this <b><a href="https://github.com/Levantine-1/DataGateway/blob/master/.github/workflows/deploy.yml">CICD pipeline</a></b> is triggered.
+                        <br>1. The pipeline starts by updating the <b><a href="https://github.com/Levantine-1/DataGateway/tree/master/terraform">infrastructure state</a></b> which does stuff like creating the ECR repo
+                        <br>2. The pipeline then compiles the application, builds a container, pushes it to the <b><a href="https://github.com/Levantine-1/DataGateway/blob/master/terraform/ecr_repo.tf">AWS ECR registry.</a></b>
+                        <br>3. The pipeline finally deploys the container to the kubernetes cluster using <b><a href="https://github.com/Levantine-1/ansible/blob/master/roles/applications/dataGateway/dataGatewayK8Configs.yml">this playbook.</a></b>
+
+                        <br><br><b>Data Gateway Topography Map</b>
+                        <br><br><img src="images/datagateway_topography.webp" alt="" />
+                        <br><br><b>What is this project NOT demonstrating?</b>
+                        <br>My journey into tech, as far as the software engineering side goes, began with dropping out of school to help build a startup, bypassing formal academic training.
+                        As a result, my skills were trained on developing functional and practical, automation scripts for tasks like system setup, health checks, auto recovery, CI/CD processes,
+                        and API interactions rather than focusing on complex, efficient algorithmic challenges or high-performance computing.
+                        <br>The largest dataset I've had to work with was ~300,000 rows of data for a nightly batch job, which was often completed in a few minutes anyway, even when doing a lot of linear searching through the data,
+                        so I never saw the need to optimize further.
+                        <br>However, I've learned in some recent interviews, that leetcode-style challenges are essential for most tech roles, so I'm working on improving my skills in that area.
+                        But today, that is not what's being demonstrated here.
+
+                        <br><br><b>So what IS this project demonstrating?</b>
+                        <br>I am using IAC (Terraform) to manage my infrastructure. I am using Ansible to configure the VMs, set up the Percona XtraDB cluster and Kubernetes cluster.
+                        The playbooks also setups the K8 deployment and services. <br>I'm using Hashicorp vault to securely store all the API keys, tokens, certificates and passwords.
+                        <br>I have a CICD pipeline that on commit to the master, it runs terraform templates to manage infrastructure states, compile the application, build a container, push it to a registry, and deploy it to the K8 cluster.
+                        <br>I am demonstrating that I am able to build a scalable spring boot application with a robust and secure end to end CICD pipeline to streamline development.
                     </p>
                 </div>
             </div>
